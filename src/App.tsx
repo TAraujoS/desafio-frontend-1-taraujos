@@ -1,13 +1,13 @@
-
-import './App.css';
+import CalcProvider from "./context/CalcContext";
+import Home from "./components/Home";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-      
-      </header>
-    </div>
+    <>
+      <CalcProvider>
+        <Home />
+      </CalcProvider>
+    </>
   );
 }
 
