@@ -1,7 +1,9 @@
 import { useContext } from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { CalcContext } from "../../context/CalcContext";
-import { Container } from "./styles";
+import { Container, DivInput } from "./styles";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 export interface IRegisterValue {
   amount: number;
@@ -12,33 +14,54 @@ export interface IRegisterValue {
 
 export const RegisterValue = () => {
   const { registerValue } = useContext(CalcContext);
-  const { handleSubmit, register } = useForm<IRegisterValue>();
 
-  const onSubmit: SubmitHandler<IRegisterValue> = (data) => {
-    registerValue(data);
-  };
+  const schema = yup.object().shape({
+    amount: yup.string().required("Campo obrigatório"),
+    installments: yup.string().required("Campo obrigatório"),
+    mdr: yup.string().required("Campo obrigatório"),
+  });
+
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm<IRegisterValue>({ resolver: yupResolver(schema) });
 
   return (
     <Container>
       <h1>Simule sua Antecipação</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
+      <form onSubmit={handleSubmit(registerValue)}>
+        <DivInput>
           <label>Informe o valor da venda*</label>
           <div className="input-value">
             <span>R$</span>
-            <input type="number" {...register("amount")} />
+            <input
+              type="number"
+              placeholder={errors.amount?.message}
+              {...register("amount")}
+            />
           </div>
-        </div>
-        <div>
-          <label>Em quantas parcelas*</label>
+        </DivInput>
 
-          <input type="number" {...register("installments")} />
+        <DivInput>
+          <label>Em quantas parcelas*</label>
+          <input
+            type="number"
+            placeholder={errors.installments?.message}
+            {...register("installments")}
+          />
           <span>Máximo de 12 parcelas</span>
-        </div>
-        <div>
+        </DivInput>
+
+        <DivInput>
           <label>Informe o percentual de MDR*</label>
-          <input type="number" {...register("mdr")} />
-        </div>
+          <input
+            type="number"
+            placeholder={errors.mdr?.message}
+            {...register("mdr")}
+          />
+        </DivInput>
+        {/* <button type="submit">Enviar</button> */}
       </form>
     </Container>
   );

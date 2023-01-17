@@ -24,6 +24,7 @@ const GlobalStyle = createGlobalStyle`
         --gray-h1: #656565;
         --gray-label: #969696;
         --gray-span: #d1d1d1;
+        --red-input: #f77777
 
     }
 

@@ -1,5 +1,5 @@
-import { RegisterValue } from "../RegisterCard";
-import { ResultValues } from "../ResultCard";
+import { RegisterValue } from "../../components/RegisterCard";
+import { ResultValues } from "../../components/ResultCard";
 import { Container } from "./styles";
 
 const Home = () => {

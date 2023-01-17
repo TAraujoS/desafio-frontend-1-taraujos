@@ -1,5 +1,5 @@
 import CalcProvider from "./context/CalcContext";
-import Home from "./components/Home";
+import Home from "./pages/Home";
 import GlobalStyle from "./styles/global";
 
 function App() {

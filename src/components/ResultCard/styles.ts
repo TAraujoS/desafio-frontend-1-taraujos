@@ -7,14 +7,13 @@ const Container = styled.section`
   justify-content: space-evenly;
 
   height: 75%;
-  margin: 2rem;
+  margin: 3rem;
 
   h2 {
     font-size: 16px;
     font-style: oblique;
 
     padding-right: 3rem;
-    margin-top: 1rem;
 
     border-bottom: 2px solid var(--lightblue-border);
     color: var(--blue-h2);
