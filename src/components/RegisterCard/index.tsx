@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { CalcContext } from "../../context/CalcContext";
+import { Container } from "./styles";
 
 export interface IRegisterValue {
   amount: number;
@@ -18,23 +19,27 @@ export const RegisterValue = () => {
   };
 
   return (
-    <div>
+    <Container>
       <h1>Simule sua Antecipação</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
-          <p>Informe o valor da venda*</p>
-          <input type="number" {...register("amount")} />
+          <label>Informe o valor da venda*</label>
+          <div className="input-value">
+            <span>R$</span>
+            <input type="number" {...register("amount")} />
+          </div>
         </div>
         <div>
-          <p>Em quantas parcelas*</p>
+          <label>Em quantas parcelas*</label>
+
           <input type="number" {...register("installments")} />
           <span>Máximo de 12 parcelas</span>
         </div>
         <div>
-          <p>Informe o percentual de MDR*</p>
+          <label>Informe o percentual de MDR*</label>
           <input type="number" {...register("mdr")} />
         </div>
       </form>
-    </div>
+    </Container>
   );
 };

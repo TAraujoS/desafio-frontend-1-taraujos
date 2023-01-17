@@ -1,12 +1,13 @@
 import { RegisterValue } from "../RegisterCard";
 import { ResultValues } from "../ResultCard";
+import { Container } from "./styles";
 
 const Home = () => {
   return (
-    <div>
+    <Container>
       <RegisterValue />
       <ResultValues />
-    </div>
+    </Container>
   );
 };
 
