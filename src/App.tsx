@@ -1,13 +1,15 @@
-
-import './App.css';
+import CalcProvider from "./context/CalcContext";
+import Home from "./pages/Home";
+import GlobalStyle from "./styles/global";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-      
-      </header>
-    </div>
+    <>
+      <GlobalStyle />
+      <CalcProvider>
+        <Home />
+      </CalcProvider>
+    </>
   );
 }
 
