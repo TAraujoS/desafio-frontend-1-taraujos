@@ -16,7 +16,7 @@ export const Container = styled.section`
     height: 85%;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 25px;
   }
 
   button {
