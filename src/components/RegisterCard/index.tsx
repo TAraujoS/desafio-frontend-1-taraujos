@@ -37,6 +37,8 @@ export const RegisterValue = () => {
             <span>R$</span>
             <input
               type="number"
+              min={1000}
+              required
               placeholder={errors.amount?.message}
               {...register("amount")}
             />
@@ -47,6 +49,9 @@ export const RegisterValue = () => {
           <label>Em quantas parcelas*</label>
           <input
             type="number"
+            min={1}
+            max={12}
+            required
             placeholder={errors.installments?.message}
             {...register("installments")}
           />
@@ -57,11 +62,14 @@ export const RegisterValue = () => {
           <label>Informe o percentual de MDR*</label>
           <input
             type="number"
+            min={0}
+            max={100}
+            required
             placeholder={errors.mdr?.message}
             {...register("mdr")}
           />
         </DivInput>
-        {/* <button type="submit">Enviar</button> */}
+        <button type="submit">Enviar</button>
       </form>
     </Container>
   );
