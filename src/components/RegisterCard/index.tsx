@@ -38,7 +38,6 @@ export const RegisterValue = () => {
             <input
               type="number"
               min={1000}
-              required
               placeholder={errors.amount?.message}
               {...register("amount")}
             />
@@ -51,7 +50,6 @@ export const RegisterValue = () => {
             type="number"
             min={1}
             max={12}
-            required
             placeholder={errors.installments?.message}
             {...register("installments")}
           />
@@ -64,12 +62,11 @@ export const RegisterValue = () => {
             type="number"
             min={0}
             max={100}
-            required
             placeholder={errors.mdr?.message}
             {...register("mdr")}
           />
         </DivInput>
-        <button type="submit">Enviar</button>
+        <button type="submit">Simular</button>
       </form>
     </Container>
   );
