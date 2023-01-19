@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { CalcContext } from "../../context/CalcContext";
-import "./styles.css";
+import { Container, DivInput } from "./styles";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
@@ -40,10 +40,10 @@ export const RegisterValue = () => {
   };
 
   return (
-    <div className="registerContainer">
+    <Container>
       <h1>Simule sua Antecipação</h1>
       <form onChange={handleSubmit(onSubmit)}>
-        <div className="divInput">
+        <DivInput>
           <label>Informe o valor da venda*</label>
           <div className="input-value">
             <span>R$</span>
@@ -55,9 +55,9 @@ export const RegisterValue = () => {
             />
           </div>
           <span className="error">{errors.amount?.message}</span>
-        </div>
+        </DivInput>
 
-        <div className="divInput">
+        <DivInput>
           <label>Em quantas parcelas*</label>
           <input
             type="number"
@@ -67,10 +67,10 @@ export const RegisterValue = () => {
             {...register("installments")}
           />
           <span className="error">{errors.installments?.message}</span>
-          <p>Máximo de 12 parcelas</p>
-        </div>
+          <span>Máximo de 12 parcelas</span>
+        </DivInput>
 
-        <div className="divInput">
+        <DivInput>
           <label>Informe o percentual de MDR*</label>
           <input
             type="number"
@@ -80,8 +80,8 @@ export const RegisterValue = () => {
             {...register("mdr")}
           />
           <span className="error">{errors.mdr?.message}</span>
-        </div>
+        </DivInput>
       </form>
-    </div>
+    </Container>
   );
 };
