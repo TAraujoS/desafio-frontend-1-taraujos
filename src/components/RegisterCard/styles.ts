@@ -19,23 +19,11 @@ export const Container = styled.section`
     gap: 25px;
   }
 
-  button {
-    width: 5rem;
-    margin: 0 auto;
-    font-size: 16px;
+  .error {
+    font-size: 12px;
     font-weight: 500;
 
-    border: 2px solid var(--lightblue-border);
-    border-radius: 5px;
-    color: var(--gray-label);
-    background-color: var(--lightblue-home);
-    cursor: pointer;
-
-    &:hover {
-      color: var(--gray-h1);
-      border-color: var(--blue-inputfocus);
-      background-color: var(--white);
-    }
+    color: var(--red-input);
   }
 `;
 

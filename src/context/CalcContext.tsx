@@ -20,7 +20,7 @@ const CalcProvider = ({ children }: ICalcProviderProps) => {
     api
       .post("", data)
       .then((response) => {
-        setValueDay(response.data);
+        setValueDay(Object.values(response.data));
       })
       .catch((err) => {
         console.log(err);
