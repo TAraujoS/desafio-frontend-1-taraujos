@@ -1,5 +1,5 @@
 import { createContext, ReactNode, useContext, useState } from "react";
-import { IRegisterValue } from "../components/RegisterCard";
+import { IRegisterValue } from "../components/RegisterCalc";
 import api from "../services";
 
 interface ICalcProviderProps {

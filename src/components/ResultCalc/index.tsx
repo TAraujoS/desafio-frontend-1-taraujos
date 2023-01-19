@@ -3,7 +3,7 @@ import Container from "./styles";
 
 export const ResultValues = () => {
   const { valueDay } = useCalcContext();
-  console.log(valueDay);
+
   return (
     <Container>
       <h2>VOCÊ RECEBERÁ:</h2>
