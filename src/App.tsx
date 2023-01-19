@@ -1,5 +1,5 @@
 import CalcProvider from "./context/CalcContext";
-import Home from "./pages/Home";
+import Main from "./pages/Main";
 import GlobalStyle from "./styles/global";
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
     <>
       <GlobalStyle />
       <CalcProvider>
-        <Home />
+        <Main />
       </CalcProvider>
     </>
   );

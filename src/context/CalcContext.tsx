@@ -1,5 +1,5 @@
 import { createContext, ReactNode, useContext, useState } from "react";
-import { IRegisterValue } from "../components/RegisterCard";
+import { IRegisterValue } from "../components/RegisterCalc";
 import api from "../services";
 
 interface ICalcProviderProps {
@@ -20,7 +20,7 @@ const CalcProvider = ({ children }: ICalcProviderProps) => {
     api
       .post("", data)
       .then((response) => {
-        setValueDay(response.data);
+        setValueDay(Object.values(response.data));
       })
       .catch((err) => {
         console.log(err);

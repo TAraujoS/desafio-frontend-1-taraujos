@@ -9,16 +9,22 @@ export interface IRegisterValue {
   amount: number;
   installments: number;
   mdr: number;
-  days?: number[];
+  days?: [];
 }
 
 export const RegisterValue = () => {
   const { registerValue } = useContext(CalcContext);
 
   const schema = yup.object().shape({
-    amount: yup.string().required("Campo obrigatório"),
-    installments: yup.string().required("Campo obrigatório"),
-    mdr: yup.string().required("Campo obrigatório"),
+    amount: yup
+      .string()
+      .test("min", "*Valor mínimo 1000", (val) => Number(val) >= 1000),
+    installments: yup
+      .string()
+      .test("max", "*Valor máximo 12", (val) => Number(val) <= 12),
+    mdr: yup
+      .string()
+      .test("max", "*Valor máximo 100", (val) => Number(val) <= 100),
   });
 
   const {
@@ -27,10 +33,16 @@ export const RegisterValue = () => {
     formState: { errors },
   } = useForm<IRegisterValue>({ resolver: yupResolver(schema) });
 
+  const onSubmit = (data: IRegisterValue) => {
+    if (data.amount && data.installments && data.mdr) {
+      registerValue(data);
+    }
+  };
+
   return (
     <Container>
       <h1>Simule sua Antecipação</h1>
-      <form onSubmit={handleSubmit(registerValue)}>
+      <form onChange={handleSubmit(onSubmit)}>
         <DivInput>
           <label>Informe o valor da venda*</label>
           <div className="input-value">
@@ -42,6 +54,7 @@ export const RegisterValue = () => {
               {...register("amount")}
             />
           </div>
+          <span className="error">{errors.amount?.message}</span>
         </DivInput>
 
         <DivInput>
@@ -53,6 +66,7 @@ export const RegisterValue = () => {
             placeholder={errors.installments?.message}
             {...register("installments")}
           />
+          <span className="error">{errors.installments?.message}</span>
           <span>Máximo de 12 parcelas</span>
         </DivInput>
 
@@ -65,8 +79,8 @@ export const RegisterValue = () => {
             placeholder={errors.mdr?.message}
             {...register("mdr")}
           />
+          <span className="error">{errors.mdr?.message}</span>
         </DivInput>
-        <button type="submit">Simular</button>
       </form>
     </Container>
   );
