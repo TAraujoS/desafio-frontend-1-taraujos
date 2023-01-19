@@ -1,11 +1,11 @@
 import { useCalcContext } from "../../context/CalcContext";
-import Container from "./styles";
+import "./styles.css";
 
 export const ResultValues = () => {
   const { valueDay } = useCalcContext();
   console.log(valueDay);
   return (
-    <Container>
+    <section className="resultContainer">
       <h2>VOCÊ RECEBERÁ:</h2>
       <p>
         Amanhã: <span>R$ {valueDay.length === 0 ? 0 : valueDay[0]},00</span>
@@ -19,6 +19,6 @@ export const ResultValues = () => {
       <p>
         Em 90 dias: <span>R$ {valueDay.length === 0 ? 0 : valueDay[3]},00</span>
       </p>
-    </Container>
+    </section>
   );
 };

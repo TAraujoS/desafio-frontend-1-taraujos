@@ -1,13 +1,13 @@
 import { RegisterValue } from "../../components/RegisterCard";
 import { ResultValues } from "../../components/ResultCard";
-import { Container } from "./styles";
+import "./styles.css";
 
 const Home = () => {
   return (
-    <Container>
+    <main>
       <RegisterValue />
       <ResultValues />
-    </Container>
+    </main>
   );
 };
 
