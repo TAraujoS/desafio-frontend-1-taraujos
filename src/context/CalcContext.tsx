@@ -1,4 +1,5 @@
 import { createContext, ReactNode, useContext, useState } from "react";
+import { toast } from "react-toastify";
 import { IRegisterValue } from "../components/RegisterCalc";
 import api from "../services";
 
@@ -23,7 +24,16 @@ const CalcProvider = ({ children }: ICalcProviderProps) => {
         setValueDay(Object.values(response.data));
       })
       .catch((err) => {
-        console.log(err);
+        if (err.code === "ERR_BAD_REQUEST") {
+          toast.error("Timeout Error (400)");
+        }
+        if (err.code === "ERR_BAD_RESPONSE") {
+          toast.error("Internal Server Error (500)");
+        }
+        if (err.code === "ECONNABORTED") {
+          toast.warning("Delay Error - Slow connection");
+        }
+        console.warn(err);
       });
   }
 
