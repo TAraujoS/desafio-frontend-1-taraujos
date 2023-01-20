@@ -49,6 +49,7 @@ export const RegisterValue = () => {
             <span>R$</span>
             <input
               type="number"
+              id="amout"
               min={1000}
               placeholder={errors.amount?.message}
               {...register("amount")}
@@ -61,6 +62,7 @@ export const RegisterValue = () => {
           <label>Em quantas parcelas*</label>
           <input
             type="number"
+            id="installments"
             min={1}
             max={12}
             placeholder={errors.installments?.message}
@@ -74,6 +76,7 @@ export const RegisterValue = () => {
           <label>Informe o percentual de MDR*</label>
           <input
             type="number"
+            id="mdr"
             min={0}
             max={100}
             placeholder={errors.mdr?.message}
