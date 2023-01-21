@@ -25,10 +25,10 @@ const CalcProvider = ({ children }: ICalcProviderProps) => {
       })
       .catch((err) => {
         if (err.code === "ERR_BAD_REQUEST") {
-          toast.error("Timeout Error (400)");
+          toast.error("Erro 408: Timeout");
         }
         if (err.code === "ERR_BAD_RESPONSE") {
-          toast.error("Internal Server Error (500)");
+          toast.error("Erro 500 : Internal Server Error ");
         }
         if (err.code === "ECONNABORTED") {
           toast.warning("Delay Error - Slow connection");

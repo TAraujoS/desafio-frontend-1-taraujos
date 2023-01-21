@@ -18,7 +18,12 @@ export const RegisterValue = () => {
   const schema = yup.object().shape({
     amount: yup
       .string()
-      .test("min", "*Valor mínimo 1000", (val) => Number(val) >= 1000),
+      .test("min", "*Valor mínimo 1000", (val) => Number(val) >= 1000)
+      .test(
+        "max",
+        "*Valor máximo 100000000",
+        (val) => Number(val) <= 100000000
+      ),
     installments: yup
       .string()
       .test("max", "*Valor máximo 12", (val) => Number(val) <= 12),
