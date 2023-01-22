@@ -25,6 +25,18 @@ export const Container = styled.section`
 
     color: var(--red-input);
   }
+
+  @media screen and (max-width: 425px) {
+    padding: 2rem 4rem;
+
+    form {
+      gap: 10px;
+
+      label {
+        font-size: 12px;
+      }
+    }
+  }
 `;
 
 export const DivInput = styled.div`

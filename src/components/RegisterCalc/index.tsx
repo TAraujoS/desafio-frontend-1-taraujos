@@ -9,7 +9,7 @@ export interface IRegisterValue {
   amount: number;
   installments: number;
   mdr: number;
-  days?: [];
+  days?: string | number[];
 }
 
 export const RegisterValue = () => {
@@ -39,6 +39,14 @@ export const RegisterValue = () => {
   } = useForm<IRegisterValue>({ resolver: yupResolver(schema) });
 
   const onSubmit = (data: IRegisterValue) => {
+    if (data.days === "") {
+      delete data.days;
+    } else if (data.days) {
+      data.days = (data.days as string)
+        .concat(", 1, 15, 30, 90")
+        .split(",")
+        .map((day: string) => Number(day));
+    }
     if (data.amount && data.installments && data.mdr) {
       registerValue(data);
     }
@@ -88,6 +96,11 @@ export const RegisterValue = () => {
             {...register("mdr")}
           />
           <span className="error">{errors.mdr?.message}</span>
+        </DivInput>
+
+        <DivInput>
+          <label>Outro periodo em dias (opcional)*</label>
+          <input type="number" id="days" {...register("days")} />
         </DivInput>
       </form>
     </Container>

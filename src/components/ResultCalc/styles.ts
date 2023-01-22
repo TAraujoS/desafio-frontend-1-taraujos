@@ -32,6 +32,16 @@ const Container = styled.section`
       color: var(--blue-span);
     }
   }
+
+  .empty {
+    display: none;
+  }
+
+  @media screen and (max-width: 425px) {
+    margin: 1rem 3rem;
+    padding-bottom: 1rem;
+    gap: 10px;
+  }
 `;
 
 export default Container;
